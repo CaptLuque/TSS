@@ -1,27 +1,34 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
+
 # Configurar el título de la página en el navegador
 st.set_page_config(
-    page_title="THE Selling System",
+    page_title="The Selling System",
     page_icon="🏠",
     menu_items={
         'Get Help': None,
         'Report a bug': None,
-        'About': 'THE Selling System v1.0'
+        'About': 'The Selling System v1.0'
     }
 )
 
+# Inicializar el estado de la sesión
+if 'page' not in st.session_state:
+    st.session_state.page = 'home'
+
+# Función para cambiar de página
+def switch_page(page_name):
+    st.session_state.page = page_name
+
 # Personalizar la barra lateral
-st.sidebar.title("🏠 THE Selling System")
+st.sidebar.title("🏠 The Selling System")
 st.sidebar.divider()
 
-# Botón para mostrar la sección de Archivos
-show_archivos = st.sidebar.button("Archivos")
 
-# Mostrar solo el contenido HTML si se pulsa el botón "Archivos"
-if show_archivos:
-    st.sidebar.header("Archivos")
+
+# Mostrar contenido según la página seleccionada
+if st.session_state.page == 'archivos':
     components.html(
         """
         <style>
@@ -50,7 +57,22 @@ if show_archivos:
         """,
         height=600  # Ajusta la altura según sea necesario
     )
+elif st.session_state.page == 'crear_cliente':
+    crear_cliente()
+elif st.session_state.page == 'Buscador de archivos':
+    archivos()
 else:
     # Contenido principal
-    st.title("🏠 Bienvenido a THE Selling System")
+    st.title("🏠 Bienvenido a The Selling System")
     st.write("Selecciona una opción del menú lateral para comenzar.")
+
+# Descripción de la herramienta
+st.write("""
+### Marta: Tu Asistente de IA
+Marta es una herramienta de inteligencia artificial diseñada para optimizar tus procesos de ventas. 
+Con Marta, puedes gestionar clientes de manera eficiente y acceder a funcionalidades avanzadas de chat.
+
+#### Funcionalidades de las Páginas:
+- **Archivos:** Accede a un chat  que te permite interactuar y gestionar tus documentos de manera dinámica.
+- **Crear Cliente:** Facilita la creación de nuevos clientes mediante un sencillo formulario que se conecta a nuestro sistema de backend.
+""")
