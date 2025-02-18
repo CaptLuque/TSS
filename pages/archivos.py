@@ -11,7 +11,11 @@ st.set_page_config(
             'About': 'THE Selling System v1.0'
         }
     )
-
+st.title("🏠 Buscador de archivos")
+st.write("""
+    Este agente te permite buscar archivos y carpetas de manera eficiente. 
+    Por favor, proporciona el nombre del cliente y especifica qué carpeta o archivo estás buscando. 
+    """)
 components.html(
         """
         <style>
@@ -26,6 +30,9 @@ components.html(
                 --chat--window--width: 100vw;
                 --chat--window--height: 100vh;
             }
+            .chat-header {
+                height: 0px !important;  /* Ajusta la altura a 0px */
+            }
         </style>
         <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
         <div id="n8n-chat"></div>
@@ -34,9 +41,13 @@ components.html(
 
             createChat({
                 webhookUrl: 'https://marta-pro-n8n.onrender.com:443/webhook/f406671e-c954-4691-b39a-66c90aa2f103/chat',
-                container: '#n8n-chat'
+                container: '#n8n-chat',
+                initialMessages: [
+                    'Hola! 👋',
+                    'Puedo ayudarte a buscar archivos y carpetas de manera eficiente.  Por favor, proporciona el nombre del cliente y especifica qué carpeta o archivo estás buscando.'
+                ]
             });
         </script>
         """,
-        height=600  # Ajusta la altura según sea necesario
+        height=550  # Ajusta la altura según sea necesario
     ) 
