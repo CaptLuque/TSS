@@ -14,7 +14,14 @@ st.set_page_config(
 
 # Contenido principal
 st.title("👥 Crear Cliente")
-
+# Personalizar la barra lateral
+st.write("""
+    Este agente 🕵🏻 te permite crear un cliente en la base de datos.
+    Tambien se creara en Click UP y generara todos los archivos necesarios para el cliente.
+    Por favor, proporciona la url con el documento de onboarding y enmpezara la magia 🧙🏻‍♂️. 
+    """)
+st.sidebar.title("🏠 The Selling System")
+st.sidebar.divider()
 # Campo para insertar URL de documento de onboarding
 document_url = st.text_input("Insertar URL de documento de onboarding")
 

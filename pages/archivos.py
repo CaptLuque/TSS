@@ -16,6 +16,9 @@ st.write("""
     Este agente te permite buscar archivos y carpetas de manera eficiente. 
     Por favor, proporciona el nombre del cliente y especifica qué carpeta o archivo estás buscando. 
     """)
+# Personalizar la barra lateral
+st.sidebar.title("🏠 The Selling System")
+st.sidebar.divider()
 components.html(
         """
         <style>
@@ -49,5 +52,5 @@ components.html(
             });
         </script>
         """,
-        height=550  # Ajusta la altura según sea necesario
+        height=540  # Ajusta la altura según sea necesario
     ) 
