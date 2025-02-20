@@ -49,7 +49,7 @@ components.html(
                     'Hola! 👋',
                     'Te estaba esperando.'
                 ],
-                mode: 'fullscreen'
+                mode: 'window'
             });
         </script>
         """,
